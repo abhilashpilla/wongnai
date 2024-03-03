@@ -2,6 +2,9 @@
 # To install  
 mvn clean install
 
+# To run the JAR
+java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
+
 # To build docker image 
 docker build --build-arg JAR_FILE=target/orderservice-0.0.1-SNAPSHOT.jar -t myorg/myapp .
 
