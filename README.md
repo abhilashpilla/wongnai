@@ -62,6 +62,8 @@ POST http://localhost:8080/api/orders
     }
 }
 
+Note: This API also assigns the order created to an available driver.
+
 ## cancel order
 PATCH http://localhost:8080/api/orders
 {
