@@ -9,7 +9,7 @@ java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
 docker build --build-arg JAR_FILE=target/orderservice-0.0.1-SNAPSHOT.jar -t myorg/myapp .
 
 # To docker run: 
-sudo docker run -e AWS_ACCESS_KEY_ID=AKIAYXJA2F2BWSZVCXEI -e AWS_SECRET_ACCESS_KEY=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 myorg/myapp
+sudo docker run -e AWS_ACCESS_KEY_ID=??? -e AWS_SECRET_ACCESS_KEY=??? myorg/myapp
 
 
 # This project uses Mongo DB change streams . Please install mongodb as a replica set. Please run the following commands:
