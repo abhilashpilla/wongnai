@@ -1,6 +1,9 @@
 
 # To install  
 mvn clean install
+# Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging
+
+
 
 # To run the JAR
 java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
@@ -9,7 +12,7 @@ java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
 docker build --build-arg JAR_FILE=target/orderservice-0.0.1-SNAPSHOT.jar -t myorg/myapp .
 
 # To docker run: 
-sudo docker run -e AWS_ACCESS_KEY_ID=??? -e AWS_SECRET_ACCESS_KEY=??? myorg/myapp
+sudo docker run -e AWS_ACCESS_KEY_ID=AKIAYXJA2F2BWSZVCXEI -e AWS_SECRET_ACCESS_KEY=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 myorg/myapp
 
 
 # This project uses Mongo DB change streams . Please install mongodb as a replica set. Please run the following commands:
@@ -26,6 +29,8 @@ docker exec -it mongo1 mongosh --eval "rs.initiate({
    {_id: 2, host: \"mongo3\"}
  ]
 })"
+
+Please create two capped collections named "order_event" and "driver_event" too for supporting tailable cursors.
 
 
 # REST endpoints are below:
