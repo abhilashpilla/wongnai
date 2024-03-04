@@ -60,6 +60,13 @@ POST http://localhost:8080/api/orders
     }
 }
 
+# cancel order
+PATCH http://localhost:8080/api/orders
+{
+    "id": "65e4ce67229f08184c4fe38a",
+    "status": "CANCELLED"
+}
+
 # order accepted by restaurant
 PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 {
