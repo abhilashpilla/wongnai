@@ -3,8 +3,6 @@
 mvn clean install
 # Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging
 
-
-
 # To run the JAR
 java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
 
