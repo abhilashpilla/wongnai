@@ -4,14 +4,14 @@ mvn clean install
 # Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging
 java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
 
-# To build docker image 
+## To build docker image 
 docker build --build-arg JAR_FILE=target/orderservice-0.0.1-SNAPSHOT.jar -t myorg/myapp .
 
-# To docker run: 
+## To docker run: 
 sudo docker run -e AWS_ACCESS_KEY_ID=AKIAYXJA2F2BWSZVCXEI -e AWS_SECRET_ACCESS_KEY=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 myorg/myapp
 
 
-# This project uses Mongo DB change streams . Please install mongodb as a replica set. Please run the following commands:
+## This project uses Mongo DB change streams . Please install mongodb as a replica set. Please run the following commands:
 
 docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:5 mongod --replSet myReplicaSet
 docker run -d --rm -p 27018:27018 --name mongo2 --network mongoCluster mongo:5 mongod --replSet myReplicaSet
@@ -29,9 +29,9 @@ docker exec -it mongo1 mongosh --eval "rs.initiate({
 Please create two capped collections named "order_event" and "driver_event" too for supporting tailable cursors.
 
 
-# REST endpoints are below:
+## REST endpoints are below:
 
-# create customer
+## create customer
 POST http://localhost:8080/api/customers
 {
     "name": "abhilash",
@@ -40,7 +40,7 @@ POST http://localhost:8080/api/customers
     "longitude": "55.292680"
 }
 
-# create driver
+## create driver
 POST http://localhost:8080/api/drivers
 {
     "name": "driver1",
@@ -50,7 +50,7 @@ POST http://localhost:8080/api/drivers
  
 }
 
-# create order
+## create order
 POST http://localhost:8080/api/orders
 {
     "type": "FOOD",
@@ -61,28 +61,28 @@ POST http://localhost:8080/api/orders
     }
 }
 
-# cancel order
+## cancel order
 PATCH http://localhost:8080/api/orders
 {
     "id": "65e4ce67229f08184c4fe38a",
     "status": "CANCELLED"
 }
 
-# order accepted by restaurant
+## order accepted by restaurant
 PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 {
     "id": "65e4ce67229f08184c4fe38a",
     "status": "ACCEPTED"
 }
 
-# order preparation complete by kitchen
+## order preparation complete by kitchen
 PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 {
     "id": "65e4ce67229f08184c4fe38a",
     "status": "PREPARED"
 }
 
-# order pickedup
+## order pickedup
 PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 {
     "id": "65e4ce67229f08184c4fe38a",
@@ -90,7 +90,7 @@ PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 }
 
 
-# driver driving with order
+## driver driving with order
 PATCH http://localhost:8080/api/drivers/65e4b2af96c61806b2e795bf
 {
     "id": "65e4b2af96c61806b2e795bf",
@@ -100,7 +100,7 @@ PATCH http://localhost:8080/api/drivers/65e4b2af96c61806b2e795bf
 }
 
 
-# driver driving with order updated location
+## driver driving with order updated location
 PATCH http://localhost:8080/api/drivers/65e4b2af96c61806b2e795bf
 {
     "id": "65e4b2af96c61806b2e795bf",
@@ -109,18 +109,18 @@ PATCH http://localhost:8080/api/drivers/65e4b2af96c61806b2e795bf
     "longitude": "55.2718015"
 }
 
-# order delivered
+## order delivered
 PATCH http://localhost:8080/api/orders/65e4ce67229f08184c4fe38a
 {
     "id": "65e4ce67229f08184c4fe38a",
     "status": "DELIVERED"
 }
 
-# order updates using server sent events
+## order updates using server sent events
 GET http://localhost:8080/api/orders/{id}/status
 
 
-# driver updates using server sent events
+## driver updates using server sent events
 GET http://localhost:8080/api/drivers/{id}/status
 
 
