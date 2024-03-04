@@ -1,4 +1,4 @@
-# Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging & Google Maps API
+# Server Sent Events for Food Ordering & Tracking System with Spring Boot + MongoDB + AWS SQS Messaging & Google Maps API
 
 ## To install  
 mvn clean install
