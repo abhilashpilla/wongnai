@@ -1,7 +1,8 @@
+Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging & Google Maps API
 
 # To install  
 mvn clean install
-# Server Sent Events for Food Ordering System with Spring Boot + MongoDB + AWS SQS Messaging
+
 java -jar -Dspring.profiles.active=dev orderservice-0.0.1-SNAPSHOT.jar
 
 ## To build docker image 
